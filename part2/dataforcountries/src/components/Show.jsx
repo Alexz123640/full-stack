@@ -1,26 +1,20 @@
-const Show = ({ filteredCountries, ix }) => {
-  let i = 0;
-  !ix?i=0:i=ix
+const Show = ({ result }) => {
 
-  const country = filteredCountries[i];
-  console.log(filteredCountries,'ddd')
-  const area = country.area;
-  const capital = country.capital[i];
-  const languages = country.languages;
-  const flag = country.flags.svg;
+  const api_key = import.meta.env.VITE_SOME_KEY
+
   return (
     <>
-      <h1>{country.name.common}</h1>
-      <p>{area}</p>
-      <p>{capital}</p>
+      <h1>{result.name.common}</h1>
+      <p>{result.area}</p>
+      <p>{result.capital[0]}</p>
       <p>languages</p>
       <ul>
-        {Object.values(languages).map((language, index) => (
+        {Object.values(result.languages).map((language, index) => (
           <li key={index}>{language}</li>
         ))}
       </ul>
       <img
-        src={flag}
+        src={result.flags.svg}
         alt="flag of country"
         width={300}
         style={{ boder: "1px solid #000" }}
